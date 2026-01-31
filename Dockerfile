@@ -6,8 +6,8 @@ LABEL version="1.0.0"
 
 WORKDIR /app
 
-# 创建非root用户
-RUN addgroup -g 1000 app && adduser -u 1000 -G app -s /bin/sh -D app
+# 创建非root用户（动态分配UID/GID）
+RUN addgroup app && adduser -G app -s /bin/sh -D app
 
 # 复制代理服务代码
 COPY proxy.js .
