@@ -48,7 +48,7 @@ docker-compose down
 node proxy.js
 
 # 指定端口
-PROXY_PORT=3100 node proxy.js
+PROXY_PORT=3120 node proxy.js
 ```
 
 ## Docker 部署
@@ -64,8 +64,8 @@ docker build -t wechat-proxy:latest .
 ```bash
 docker run -d \
   --name wechat-proxy \
-  -p 3100:3100 \
-  -e PROXY_PORT=3100 \
+  -p 3120:3120 \
+  -e PROXY_PORT=3120 \
   -e TARGET_HOST=qyapi.weixin.qq.com \
   -e TARGET_PORT=443 \
   --restart unless-stopped \
@@ -78,7 +78,7 @@ docker run -d \
 
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
-| `PROXY_PORT` | 3100 | 代理服务监听端口 |
+| `PROXY_PORT` | 3120 | 代理服务监听端口 |
 | `TARGET_HOST` | qyapi.weixin.qq.com | 目标服务器地址 |
 | `TARGET_PORT` | 443 | 目标服务器端口 |
 
@@ -92,13 +92,13 @@ services:
     container_name: wechat-proxy
     restart: unless-stopped
     ports:
-      - "3100:3100"
+      - "3120:3120"
     environment:
-      - PROXY_PORT=3100
+      - PROXY_PORT=3120
       - TARGET_HOST=qyapi.weixin.qq.com
       - TARGET_PORT=443
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3100/health"]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3120/health"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -117,7 +117,7 @@ services:
 ## 健康检查
 
 ```bash
-curl http://localhost:3100/health
+curl http://localhost:3120/health
 
 # 返回示例
 {
@@ -144,7 +144,7 @@ curl http://localhost:3100/health
 {
   "env": {
     "vars": {
-      "WECOM_API_PROXY": "http://你的代理服务器IP:3100",
+      "WECOM_API_PROXY": "http://你的代理服务器IP:3120",
       "WECOM_CORP_ID": "你的企业ID",
       "WECOM_CORP_SECRET": "你的应用Secret",
       "WECOM_AGENT_ID": "你的应用AgentId",
@@ -191,8 +191,8 @@ docker pull your-registry.example.com/wechat-proxy:latest
 # 运行
 docker run -d \
   --name wechat-proxy \
-  -p 3100:3100 \
-  -e PROXY_PORT=3100 \
+  -p 3120:3120 \
+  -e PROXY_PORT=3120 \
   -e TARGET_HOST=qyapi.weixin.qq.com \
   -e TARGET_PORT=443 \
   --restart unless-stopped \
@@ -212,7 +212,7 @@ docker logs wechat-proxy
 ### 请求统计
 
 ```bash
-curl http://localhost:3100/stats
+curl http://localhost:3120/stats
 
 # 返回示例
 {
@@ -238,7 +238,7 @@ docker stats wechat-proxy
 ### 代理无法连接
 
 1. 检查防火墙设置
-2. 确认3100端口已开放
+2. 确认3120端口已开放
 3. 检查目标服务器是否可达
 
 ```bash

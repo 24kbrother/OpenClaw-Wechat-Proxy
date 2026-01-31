@@ -8,12 +8,12 @@
  *   node proxy.js [port]
  * 
  * 环境变量：
- *   PROXY_PORT - 代理服务端口（默认3100）
+ *   PROXY_PORT - 代理服务端口（默认3120）
  *   TARGET_HOST - 目标服务器（默认 qyapi.weixin.qq.com）
  *   TARGET_PORT - 目标端口（默认443）
  * 
  * 示例：
- *   PROXY_PORT=3100 TARGET_HOST=qyapi.weixin.qq.com node proxy.js
+ *   PROXY_PORT=3120 TARGET_HOST=qyapi.weixin.qq.com node proxy.js
  */
 
 const http = require('http');
@@ -21,7 +21,7 @@ const https = require('https');
 const { URL } = require('url');
 
 // 配置
-const PROXY_PORT = parseInt(process.env.PROXY_PORT || '3100', 10);
+const PROXY_PORT = parseInt(process.env.PROXY_PORT || '3120', 10);
 const TARGET_HOST = process.env.TARGET_HOST || 'qyapi.weixin.qq.com';
 const TARGET_PORT = parseInt(process.env.TARGET_PORT || '443', 10);
 
