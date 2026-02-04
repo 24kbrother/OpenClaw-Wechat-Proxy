@@ -1,6 +1,6 @@
 # OpenClaw WeChat Proxy
 
-> 企业微信 API 反向代理服务，用于绕过 IP 白名单限制。
+> 企业微信 API 反向代理服务，用于家宽验证企业微信API。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Docker Image Size](https://img.shields.io/docker/image-size/wechat-proxy/latest)](https://hub.docker.com/r/yourusername/wechat-proxy)
